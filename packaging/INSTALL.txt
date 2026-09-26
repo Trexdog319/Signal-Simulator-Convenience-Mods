@@ -1,0 +1,13 @@
+SIGNAL SIMULATOR CONVENIENCE MODS
+
+INSTALL
+  1. In Steam, right-click Signal Simulator > Manage > Browse local files.
+  2. Extract everything from this zip into that folder.
+     (winhttp.dll should end up next to SignalSimulator.exe.)
+  3. Start the game. The new settings are under Options > Gameplay.
+
+UNINSTALL
+  Delete winhttp.dll, doorstop_config.ini, .doorstop_version and the BepInEx folder.
+  Your game files are never changed.
+
+More info: https://github.com/Trexdog319/Signal-Simulator-Convenience-Mods
