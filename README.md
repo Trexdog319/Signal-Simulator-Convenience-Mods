@@ -5,7 +5,7 @@ and control over how often special radio signals show up.
 
 ## Install
 
-1. **[Download the mods](https://github.com/Trexdog319/Signal-Simulator-Convenience-Mods/raw/main/download/SignalSimulatorMods-FullInstall.zip)**
+1. **[Download the mods](https://github.com/Trexdog319/Signal-Simulator-Convenience-Mods/releases/latest/download/SignalSimulatorMods-FullInstall.zip)** (or get `SignalSimulatorMods-FullInstall.zip` from the [Releases page](https://github.com/Trexdog319/Signal-Simulator-Convenience-Mods/releases/latest))
 2. In Steam, right-click **Signal Simulator → Manage → Browse local files**.
 3. Extract everything from the zip into that folder (`winhttp.dll` should sit next to `SignalSimulator.exe`).
 4. Start the game. The new settings are under **Options → Gameplay**.
@@ -57,5 +57,6 @@ For developers only. You need the game with BepInEx installed, Git Bash and Pyth
 python packaging/package.py
 ```
 
-`build.sh` compiles the mods and installs them into your game. `package.py` then rebuilds the download zip in
-`download/`. The source is in `FluidMovement/`, `RandomSecretSignals/` and `Shared/`.
+`build.sh` compiles the mods and installs them into your game. `package.py` then builds
+`download/SignalSimulatorMods-FullInstall.zip`, which is the file to attach to a new GitHub release. The source
+is in `FluidMovement/`, `RandomSecretSignals/` and `Shared/`.
