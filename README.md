@@ -1,7 +1,7 @@
 # Signal Simulator Convenience Mods
 
 A set of improvements I would've liked to have in Signal Simulator: better player and golf kart movement,
-and control over how often special radio signals show up.
+control over how often special radio signals show up, and performance tweaks for lower-end PCs.
 
 ## Install
 
@@ -33,10 +33,33 @@ If you already have BepInEx 5, just take the `BepInEx/plugins` folder from the z
 - **Radio Event Chance**: how often that happens (default 3%).
 - **Radio Story Chance**: how often story signals show up (default 10%, same as the base game).
 
+**Performance**
+
+Makes the game run better on lower-end PCs by cutting graphics work that is hard to see, and fixes a few
+settings that didn't do what they said.
+
+| Key | Action |
+|---|---|
+| F9 | Turn all the performance tweaks on or off, to compare |
+| F10 | Show an FPS counter |
+
+- Shadows: cheaper soft shadows, a shorter shadow distance, and no shadows from lamps. The in-game
+  **Shadows: Off** setting now really turns shadows off.
+- Weather: cheaper clouds, fog and reflections.
+- The monitor screens in the base refresh 10 times a second instead of every frame.
+- The colorblind filter no longer runs when it is set to Normal.
+- Grass, trees and terrain are drawn in less detail further away. Inside the base, objects keep full
+  detail so nothing pops in.
+- The game drops to 10 FPS while you're alt-tabbed out.
+
+Everything can be adjusted or turned off in `BepInEx/config/signalsim.performancetweaks.cfg`. The in-game
+graphics options still work, and these tweaks apply on top of them.
+
 ## Settings
 
-All the main options are in-game under **Options → Gameplay**. For more detail (key bindings, jump height,
-crouch speed and so on), edit the files in `BepInEx/config/` inside the game folder.
+The movement and radio options are in-game under **Options → Gameplay**. For more detail (key bindings,
+jump height, crouch speed, performance settings and so on), edit the files in `BepInEx/config/` inside the
+game folder.
 
 ## Uninstall
 
@@ -59,4 +82,4 @@ python packaging/package.py
 
 `build.sh` compiles the mods and installs them into your game. `package.py` then builds
 `download/SignalSimulatorMods-FullInstall.zip`, which is the file to attach to a new GitHub release. The source
-is in `FluidMovement/`, `RandomSecretSignals/` and `Shared/`.
+is in `FluidMovement/`, `RandomSecretSignals/`, `PerformanceTweaks/` and `Shared/`.

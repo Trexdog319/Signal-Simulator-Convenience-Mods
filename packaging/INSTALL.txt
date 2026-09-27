@@ -5,6 +5,8 @@ INSTALL
   2. Extract everything from this zip into that folder.
      (winhttp.dll should end up next to SignalSimulator.exe.)
   3. Start the game. The new settings are under Options > Gameplay.
+     Performance settings are in BepInEx\config\signalsim.performancetweaks.cfg
+     (created on first launch). In-game, F9 turns them on/off and F10 shows FPS.
 
 UNINSTALL
   Delete winhttp.dll, doorstop_config.ini, .doorstop_version and the BepInEx folder.

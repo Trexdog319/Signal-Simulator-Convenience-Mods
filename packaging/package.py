@@ -1,4 +1,4 @@
-"""Builds download/SignalSimulatorMods-FullInstall.zip (BepInEx + both mods) from bin/ (run build.sh first).
+"""Builds download/SignalSimulatorMods-FullInstall.zip (BepInEx + all mods) from bin/ (run build.sh first).
 
 Players extract the zip straight into the game folder.
 """
@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BIN = ROOT / "bin"
 OUT = ROOT / "download" / "SignalSimulatorMods-FullInstall.zip"
 BEPINEX_ZIP = ROOT / "third_party" / "BepInEx_win_x64_5.4.23.2.zip"
-MODS = ["FluidMovement", "RandomSecretSignals"]
+MODS = ["FluidMovement", "RandomSecretSignals", "PerformanceTweaks"]
 
 
 def main():
