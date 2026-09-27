@@ -1,7 +1,8 @@
 # Signal Simulator Convenience Mods
 
 A set of improvements I would've liked to have in Signal Simulator: better player and golf kart movement,
-control over how often special radio signals show up, and performance tweaks for lower-end PCs.
+control over how often special radio signals show up, playback controls for recorded signals, and
+performance tweaks for lower-end PCs.
 
 ## Install
 
@@ -32,6 +33,20 @@ If you already have BepInEx 5, just take the `BepInEx/plugins` folder from the z
   schedule back.
 - **Radio Event Chance**: how often that happens (default 3%).
 - **Radio Story Chance**: how often story signals show up (default 10%, same as the base game).
+
+**Signal playback**
+
+The laptop's signal database could only play a recorded signal from the start. Now it shows how long the
+signal is and lets you replay any part of it.
+
+- A seek bar with the elapsed and total time. The length shows as soon as you select a signal. Click or drag
+  the bar to jump to any point, even before pressing PLAY.
+- **Pause / Resume**, **skip back / forward 5 seconds**, and **Loop**.
+- Keys while the database is open: Left / Right arrows to skip, P to pause.
+- When a signal finishes, the button goes back to PLAY and the control panel sound comes back on (the game
+  used to leave it muted).
+
+The skip length and keys can be changed in `BepInEx/config/signalsim.signalplayback.cfg`.
 
 **Performance**
 
@@ -82,4 +97,4 @@ python packaging/package.py
 
 `build.sh` compiles the mods and installs them into your game. `package.py` then builds
 `download/SignalSimulatorMods-FullInstall.zip`, which is the file to attach to a new GitHub release. The source
-is in `FluidMovement/`, `RandomSecretSignals/`, `PerformanceTweaks/` and `Shared/`.
+is in `FluidMovement/`, `RandomSecretSignals/`, `PerformanceTweaks/`, `SignalPlayback/` and `Shared/`.

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Builds all three mods against the installed game's assemblies and copies them into BepInEx/plugins.
+# Builds all the mods against the installed game's assemblies and copies them into BepInEx/plugins.
 # Needs the game with BepInEx installed. Set GAME=/path/to/SignalSimulator if it isn't in the default Steam folder.
 # Usage: ./build.sh [path-to-csc.exe]   (defaults to Roslyn in tools/roslyn, downloaded from NuGet on first run)
 set -euo pipefail
@@ -28,7 +28,7 @@ REFS=(
   "-r:$M/UnityEngine.dll" "-r:$M/UnityEngine.CoreModule.dll" "-r:$M/UnityEngine.PhysicsModule.dll"
   "-r:$M/UnityEngine.InputLegacyModule.dll" "-r:$M/UnityEngine.UI.dll" "-r:$M/UnityEngine.UIModule.dll"
   "-r:$M/UnityEngine.TextRenderingModule.dll" "-r:$M/UnityEngine.VehiclesModule.dll" "-r:$M/UnityEngine.ParticleSystemModule.dll" "-r:$M/Assembly-CSharp.dll"
-  "-r:$M/UnityEngine.TerrainModule.dll" "-r:$M/UnityEngine.IMGUIModule.dll" "-r:$M/Unity.Postprocessing.Runtime.dll"
+  "-r:$M/UnityEngine.TerrainModule.dll" "-r:$M/UnityEngine.IMGUIModule.dll" "-r:$M/Unity.Postprocessing.Runtime.dll" "-r:$M/UnityEngine.AudioModule.dll"
   "-r:$B/BepInEx.dll" "-r:$B/0Harmony.dll"
 )
 
@@ -42,10 +42,11 @@ build() {
 build SignalSim.FluidMovement "$HERE/FluidMovement/"*.cs "$HERE/Shared/"*.cs
 build SignalSim.RandomSecretSignals "$HERE/RandomSecretSignals/"*.cs "$HERE/Shared/"*.cs
 build SignalSim.PerformanceTweaks "$HERE/PerformanceTweaks/"*.cs
+build SignalSim.SignalPlayback "$HERE/SignalPlayback/"*.cs
 
 # Install the same way the release zips lay it out: one folder per mod.
 P="$GAME/BepInEx/plugins"
-for mod in FluidMovement RandomSecretSignals PerformanceTweaks; do
+for mod in FluidMovement RandomSecretSignals PerformanceTweaks SignalPlayback; do
   mkdir -p "$P/$mod"
   cp "$OUT/SignalSim.$mod.dll" "$P/$mod/"
   rm -f "$P/SignalSim.$mod.dll"   # older loose-file layout
