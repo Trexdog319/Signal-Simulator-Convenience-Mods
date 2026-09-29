@@ -28,7 +28,7 @@ REFS=(
   "-r:$M/UnityEngine.dll" "-r:$M/UnityEngine.CoreModule.dll" "-r:$M/UnityEngine.PhysicsModule.dll"
   "-r:$M/UnityEngine.InputLegacyModule.dll" "-r:$M/UnityEngine.UI.dll" "-r:$M/UnityEngine.UIModule.dll"
   "-r:$M/UnityEngine.TextRenderingModule.dll" "-r:$M/UnityEngine.VehiclesModule.dll" "-r:$M/UnityEngine.ParticleSystemModule.dll" "-r:$M/Assembly-CSharp.dll"
-  "-r:$M/UnityEngine.TerrainModule.dll" "-r:$M/UnityEngine.IMGUIModule.dll" "-r:$M/Unity.Postprocessing.Runtime.dll" "-r:$M/UnityEngine.AudioModule.dll"
+  "-r:$M/UnityEngine.TerrainModule.dll" "-r:$M/UnityEngine.IMGUIModule.dll" "-r:$M/Unity.Postprocessing.Runtime.dll" "-r:$M/UnityEngine.AudioModule.dll" "-r:$M/UnityEngine.JSONSerializeModule.dll"
   "-r:$B/BepInEx.dll" "-r:$B/0Harmony.dll"
 )
 
@@ -43,10 +43,11 @@ build SignalSim.FluidMovement "$HERE/FluidMovement/"*.cs "$HERE/Shared/"*.cs
 build SignalSim.RandomSecretSignals "$HERE/RandomSecretSignals/"*.cs "$HERE/Shared/"*.cs
 build SignalSim.PerformanceTweaks "$HERE/PerformanceTweaks/"*.cs
 build SignalSim.SignalPlayback "$HERE/SignalPlayback/"*.cs
+build SignalSim.SaveSlots "$HERE/SaveSlots/"*.cs
 
 # Install the same way the release zips lay it out: one folder per mod.
 P="$GAME/BepInEx/plugins"
-for mod in FluidMovement RandomSecretSignals PerformanceTweaks SignalPlayback; do
+for mod in FluidMovement RandomSecretSignals PerformanceTweaks SignalPlayback SaveSlots; do
   mkdir -p "$P/$mod"
   cp "$OUT/SignalSim.$mod.dll" "$P/$mod/"
   rm -f "$P/SignalSim.$mod.dll"   # older loose-file layout

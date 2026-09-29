@@ -1,8 +1,8 @@
 # Signal Simulator Convenience Mods
 
 A set of improvements I would've liked to have in Signal Simulator: better player and golf kart movement,
-control over how often special radio signals show up, playback controls for recorded signals, and
-performance tweaks for lower-end PCs.
+control over how often special radio signals show up, playback controls for recorded signals, multiple save
+files, and performance tweaks for lower-end PCs.
 
 ## Install
 
@@ -34,6 +34,17 @@ If you already have BepInEx 5, just take the `BepInEx/plugins` folder from the z
 - **Radio Event Chance**: how often that happens (default 3%).
 - **Radio Story Chance**: how often story signals show up (default 10%, same as the base game).
 
+**Save files**
+
+Keep several separate games. On the main menu, **SAVE: ...** (under NEW GAME) opens the save list:
+
+- **Select** a save, then press **CONTINUE** to play it.
+- **+ New save file** makes an empty one. Select it and press **NEW GAME** to start a separate game.
+- **Rename** or **Delete** any save. Deleting asks you to confirm first.
+
+Saves never affect each other, and each one keeps its own difficulty. Your original save is "Save 1" and stays
+in the game's normal save file, so it still works if you remove the mod.
+
 **Signal playback**
 
 The laptop's signal database could only play a recorded signal from the start. Now it shows how long the
@@ -55,7 +66,7 @@ settings that didn't do what they said.
 
 | Key | Action |
 |---|---|
-| F9 | Turn all the performance tweaks on or off, to compare |
+| F9 | Turn the performance tweaks on or off. They start **off**; press F9 to turn them on |
 | F10 | Show an FPS counter |
 
 - Shadows: cheaper soft shadows, a shorter shadow distance, and no shadows from lamps. The in-game
@@ -67,7 +78,8 @@ settings that didn't do what they said.
   detail so nothing pops in.
 - The game drops to 10 FPS while you're alt-tabbed out.
 
-Everything can be adjusted or turned off in `BepInEx/config/signalsim.performancetweaks.cfg`. The in-game
+To have them on every time the game starts, set `StartOn = true`. Everything can be adjusted or turned off
+in `BepInEx/config/signalsim.performancetweaks.cfg`. The in-game
 graphics options still work, and these tweaks apply on top of them.
 
 ## Settings
@@ -97,4 +109,4 @@ python packaging/package.py
 
 `build.sh` compiles the mods and installs them into your game. `package.py` then builds
 `download/SignalSimulatorMods-FullInstall.zip`, which is the file to attach to a new GitHub release. The source
-is in `FluidMovement/`, `RandomSecretSignals/`, `PerformanceTweaks/`, `SignalPlayback/` and `Shared/`.
+is in `FluidMovement/`, `RandomSecretSignals/`, `PerformanceTweaks/`, `SignalPlayback/`, `SaveSlots/` and `Shared/`.

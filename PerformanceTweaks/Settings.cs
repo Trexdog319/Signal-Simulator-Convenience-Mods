@@ -10,7 +10,7 @@ namespace SignalSimMods.PerformanceTweaks
     internal static class Settings
     {
         // General
-        public static ConfigEntry<bool> Enabled;
+        public static ConfigEntry<bool> StartOn;
         public static ConfigEntry<KeyboardShortcut> ToggleKey;
         public static ConfigEntry<KeyboardShortcut> OverlayKey;
         public static ConfigEntry<int> BackgroundFps;
@@ -60,10 +60,27 @@ namespace SignalSimMods.PerformanceTweaks
         public static ConfigEntry<float> IndoorLodBias;
         public static ConfigEntry<int> IndoorPixelLights;
 
+        /// <summary>
+        /// 1.0 had "Enabled" (default true). It no longer does anything, so drop it from existing config files
+        /// rather than leave a misleading "Enabled = true" behind.
+        /// </summary>
+        private static void RemoveOldEnabledSetting(ConfigFile cfg)
+        {
+            try
+            {
+                var orphans = HarmonyLib.Traverse.Create(cfg).Property("OrphanedEntries")
+                    .GetValue<System.Collections.Generic.Dictionary<ConfigDefinition, string>>();
+                if (orphans != null && orphans.Remove(new ConfigDefinition("General", "Enabled"))) cfg.Save();
+            }
+            catch { /* cosmetic only */ }
+        }
+
         public static void Bind(ConfigFile cfg)
         {
-            Enabled = cfg.Bind("General", "Enabled", true,
-                "Master switch. Can also be flipped live with ToggleKey to compare before/after.");
+            // New key rather than a new default for "Enabled": existing configs have Enabled = true written in them.
+            StartOn = cfg.Bind("General", "StartOn", false,
+                "Turn the tweaks on automatically when the game starts. Off by default: press ToggleKey (F9) in-game to turn them on.");
+            RemoveOldEnabledSetting(cfg);
             ToggleKey = cfg.Bind("General", "ToggleKey", new KeyboardShortcut(KeyCode.F9),
                 "Turn all tweaks on/off in-game (restores the game's original values when off).");
             OverlayKey = cfg.Bind("General", "OverlayKey", new KeyboardShortcut(KeyCode.F10),

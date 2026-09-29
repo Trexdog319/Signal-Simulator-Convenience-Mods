@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BIN = ROOT / "bin"
 OUT = ROOT / "download" / "SignalSimulatorMods-FullInstall.zip"
 BEPINEX_ZIP = ROOT / "third_party" / "BepInEx_win_x64_5.4.23.2.zip"
-MODS = ["FluidMovement", "RandomSecretSignals", "PerformanceTweaks", "SignalPlayback"]
+MODS = ["FluidMovement", "RandomSecretSignals", "PerformanceTweaks", "SignalPlayback", "SaveSlots"]
 
 
 def main():

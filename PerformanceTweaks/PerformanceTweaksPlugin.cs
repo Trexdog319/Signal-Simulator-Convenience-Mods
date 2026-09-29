@@ -13,7 +13,7 @@ namespace SignalSimMods.PerformanceTweaks
     {
         public const string Guid = "signalsim.performancetweaks";
         public const string Name = "Performance Tweaks";
-        public const string Version = "1.0.0";
+        public const string Version = "1.1.0";
 
         internal static ManualLogSource Log;
         internal static PerformanceTweaksPlugin Instance;
@@ -49,7 +49,7 @@ namespace SignalSimMods.PerformanceTweaks
             Patches.Apply(harmony);
 
             SceneManager.sceneLoaded += OnSceneLoaded;
-            active = S.Enabled.Value;
+            active = S.StartOn.Value;
             Log.LogInfo($"{Name} loaded. Tweaks {(active ? "ON" : "OFF")}. {S.ToggleKey.Value} = toggle, {S.OverlayKey.Value} = FPS overlay.");
         }
 
